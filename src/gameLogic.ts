@@ -9,7 +9,7 @@ export const getRandomChoice = (): Choice => {
 
 export const determineWinner = (
   playerChoice: Choice,
-  houseChoice: Choice
+  houseChoice: Choice,
 ): string => {
   if (playerChoice === houseChoice) return "draw";
   if (

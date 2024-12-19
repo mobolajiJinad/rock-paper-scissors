@@ -36,15 +36,15 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col text-gray-100 justify-around items-center">
+    <div className="flex min-h-screen flex-col items-center justify-around text-gray-100">
       {/* Header */}
-      <header className="w-full md:mx-6 border-4 mb-6   max-w-3xl mx-auto flex justify-between items-center p-4 rounded-lg border-gray-500 ">
-        <h1 className="w-1/2 text-left leading-none font-extrabold text-3xl break-words">
+      <header className="mx-auto mb-6 flex w-full max-w-3xl items-center justify-between rounded-lg border-4 border-gray-500 p-4 md:mx-6">
+        <h1 className="w-1/2 break-words text-left text-3xl font-extrabold leading-none">
           Rock <br /> Paper <br /> Scissors
         </h1>
 
-        <div className="py-2 px-6  rounded-lg bg-white">
-          <h4 className="text-gray-700 uppercase font-extrabold text-xs">
+        <div className="rounded-lg bg-white px-6 py-2">
+          <h4 className="text-xs font-extrabold uppercase text-gray-700">
             Score
           </h4>
           <p className="text-4xl font-extrabold text-gray-900">{score}</p>
@@ -53,37 +53,39 @@ function Home() {
 
       {/* Game Board */}
       {!playerChoice ? (
-        <section className="relative w-full md:w-3/5  my-12">
-          <img src={BgTriangle} alt="" className="w-full h-auto" />
+        <section className="relative my-12 w-full md:w-3/5">
+          <img
+            src={BgTriangle}
+            alt=""
+            className="mx-auto h-auto w-full md:w-2/3"
+          />
 
           <div
-            className="bg-white h-28 w-28 md:h-40 md:w-40 cursor-pointer hover:shadow-xl md:-left-6 hover:scale(110) shadow-md border-8 border-[#4464F9] flex items-center justify-center rounded-full absolute -top-9 left-0"
+            className="absolute -top-9 left-0 flex h-28 w-28 cursor-pointer items-center justify-center rounded-full border-8 border-[#4464F9] bg-white shadow-md hover:scale-110 hover:shadow-xl md:left-2 md:h-32 md:w-32 lg:h-40 lg:w-40"
             onClick={() => handlePlayerChoice("rock")}
           >
             <img src={IconRock} alt="Rock" />
           </div>
 
           <div
-            className="bg-white h-28 w-28 md:h-40 md:w-40 cursor-pointer hover:shadow-xl md:-right-6 hover:scale(110) shadow-md border-8 border-[#ECA31B] flex items-center justify-center rounded-full absolute -top-9 right-0"
+            className="absolute -top-9 right-0 flex h-28 w-28 cursor-pointer items-center justify-center rounded-full border-8 border-[#ECA31B] bg-white shadow-md hover:scale-110 hover:shadow-xl md:right-2 md:h-32 md:w-32 lg:h-40 lg:w-40"
             onClick={() => handlePlayerChoice("paper")}
           >
             <img src={IconPaper} alt="Paper" />
           </div>
 
           <div
-            className="bg-white h-28 w-28 md:h-40 md:w-40 cursor-pointer hover:shadow-xl hover:scale(110) shadow-md border-8 border-[#DD3754] flex items-center justify-center rounded-full absolute bottom-0 left-1/2 -translate-x-1/2"
+            className="absolute bottom-0 left-1/2 flex h-28 w-28 -translate-x-1/2 cursor-pointer items-center justify-center rounded-full border-8 border-[#DD3754] bg-white shadow-md hover:scale-110 hover:shadow-xl md:h-32 md:w-32 lg:h-40 lg:w-40"
             onClick={() => handlePlayerChoice("scissors")}
           >
             <img src={IconScissors} alt="Scissors" />
           </div>
         </section>
       ) : (
-        <section className="flex justify-between md:gap-8 lg:w-1/2 lg:mx-auto w-full gap-4 items-center">
+        <section className="flex w-full items-center justify-between gap-4 md:gap-8 lg:mx-auto lg:w-1/2">
           {/* Player Choice */}
           <div>
-            <div
-              className={`bg-white h-28 w-28 md:h-40 md:w-40 lg:w-48 lg:h-48 shadow-md border-8 border-[#4464F9] flex items-center justify-center rounded-full`}
-            >
+            <div className="flex h-28 w-28 items-center justify-center rounded-full border-8 border-[#4464F9] bg-white shadow-md md:h-40 md:w-40 lg:h-48 lg:w-48">
               <img
                 src={
                   playerChoice === "rock"
@@ -95,7 +97,7 @@ function Home() {
                 alt="Player Choice"
               />
             </div>
-            <h3 className="text-xl uppercase font-bold mt-2 text-gray-300">
+            <h3 className="mt-2 text-xl font-bold uppercase text-gray-300">
               You picked
             </h3>
           </div>
@@ -103,11 +105,9 @@ function Home() {
           {/* House Choice */}
           <div>
             {!houseChoice ? (
-              <div className="bg-black/30 h-28 w-28 shadow-md rounded-full animate-pulse"></div>
+              <div className="h-28 w-28 animate-pulse rounded-full bg-black/30 shadow-md"></div>
             ) : (
-              <div
-                className={`bg-white  h-28 w-28 md:h-40 md:w-40 lg:w-48 lg:h-48 shadow-md border-8 border-[#ECA31B] flex items-center justify-center rounded-full`}
-              >
+              <div className="flex h-28 w-28 items-center justify-center rounded-full border-8 border-[#ECA31B] bg-white shadow-md md:h-40 md:w-40 lg:h-48 lg:w-48">
                 <img
                   src={
                     houseChoice === "rock"
@@ -120,7 +120,7 @@ function Home() {
                 />
               </div>
             )}
-            <h3 className="text-xl uppercase font-bold mt-2 text-gray-300">
+            <h3 className="mt-2 text-xl font-bold uppercase text-gray-300">
               The house picked
             </h3>
           </div>
@@ -131,20 +131,20 @@ function Home() {
       {winner && (
         <div className="text-center">
           {winner === "player" ? (
-            <h3 className="text-4xl uppercase font-bold mt-4 text-[#4464F9]">
+            <h3 className="mt-4 text-4xl font-bold uppercase text-[#4464F9]">
               You Win
             </h3>
           ) : winner === "house" ? (
-            <h3 className="text-4xl uppercase font-bold mt-4 text-[#DD3754]">
+            <h3 className="mt-4 text-4xl font-bold uppercase text-[#DD3754]">
               You Lose
             </h3>
           ) : (
-            <h3 className="text-4xl uppercase font-bold mt-4 text-gray-300">
+            <h3 className="mt-4 text-4xl font-bold uppercase text-gray-300">
               Draw
             </h3>
           )}
           <button
-            className="bg-[#ECA31B] py-2.5 px-10 border border-transparent rounded-lg text-gray-900 text-xl font-bold capitalize mt-4 hover:bg-[#c88916] transition-all"
+            className="mt-4 rounded-lg border border-transparent bg-[#ECA31B] px-10 py-2.5 text-xl font-bold capitalize text-gray-900 transition-all hover:bg-[#c88916]"
             onClick={resetGame}
           >
             Play Again
@@ -154,7 +154,7 @@ function Home() {
 
       <a
         href="/rules"
-        className="text-gray-200 cursor-pointer lg:self-end py-3 px-8 border border-gray-400 rounded-md"
+        className="my-4 cursor-pointer rounded-md border border-gray-400 px-8 py-3 text-gray-200 md:self-end"
       >
         Rules
       </a>
